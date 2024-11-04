@@ -16,11 +16,11 @@ for (int i = 0; i<pocetAut; i++)
     new Auto(15, 60, 5, 120);
 }
 
-var kalendar = new PriorityQueue<string, int>();
+var kalendar = new PriorityQueue<Udalost, int>();
 
 public void Planuj(Auto a, int k, Typ c)
 {
-    kalendar.Enqueue(new Udalost(a, k, c));
+    kalendar.Enqueue(new Udalost(a, k, c), k);
 }
 
 class Auto;
@@ -50,3 +50,4 @@ class Udalost
         co = c;
     }
 }
+
