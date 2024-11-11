@@ -37,7 +37,7 @@ class Auto;
         dobaVykladani = dv;
     }
 }
-
+//alalala
 class Udalost
 {
     Auto kdo;
