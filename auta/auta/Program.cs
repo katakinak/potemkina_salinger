@@ -10,13 +10,40 @@ public int pisekMezi;
 public int cas;
 public int KdyNakladat;
 public int pocetAut = 4;
+var kalendar = new PriorityQueue<Udalost, int>();
+var nakladani = new PriorityQueue<Auto, int>();
 
 for (int i = 0; i<pocetAut; i++)
 {
-    new Auto(15, 60, 5, 120);
+    a = new Auto(15, 60, 5, 120);
+    nakladani.Enqueue(a, a.nosnost);
+}
+while (true)
+{
+    Udalost temp = kalendar.Dequeue()
+    switch (temp.Typ)
+    {
+        case Vylozit:
+            Vylozit(temp.kdo, temp.kdy);
+            break;
+   //     case Nalozit:
+   //        Nalozit(temp.kdo, temp.kdy);
+   //        break;
+        case Nalozeno:
+            Nalozeno(temp.kdo, temp.kdy);
+            break;
+        case PrijezdDoB:
+            PrijezdDoB(temp.kdo, temp.kdy);
+            break;
+        case PrijezdDoA:
+            PrijezdDoA(temp.kdo);
+            break;
+    }
+
+
 }
 
-var kalendar = new PriorityQueue<Udalost, int>();
+
 
 public void Planuj(Auto a, int k, Typ c)
 {
@@ -26,18 +53,23 @@ public void Nalozeno(Auto a, int k)
 {
     pisekA -= a.nosnost;
     pisekMezi += a.nosnost;
-    Planuj(a, k, Naloz);//
-    Planuj(a, k + a.dobaJizdy, PrijezdDoB);
+    Auto temp = nakladani.Dequeue();
+    Planuj(temp, k-temp.dobaNakladani, Nalozeno);
+    Planuj(a, k - a.dobaJizdy, PrijezdDoB);
 }
 public void PrijezdDoB(Auto a, int k)
 {
-    Planuj(a, k + a.dobaVykladani, Vylozeno);
+    Planuj(a, k - a.dobaVykladani, Vylozeno);
 }
 public void Vylozit(Auto a, int k)
 {
     pisekMezi -= a.nosnost;
     pisekB += a.nosnost;
-    Planuj(a, k+a.dobaJizdy, PrijezdDoA)
+    Planuj(a, k-a.dobaJizdy, PrijezdDoA)
+}
+public void PrijezdDoA(Auto a)
+{
+    nakladani.Enqueue(a)
 }
 class Auto;
 {
