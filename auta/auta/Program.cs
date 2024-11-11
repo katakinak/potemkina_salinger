@@ -22,7 +22,7 @@ public void Planuj(Auto a, int k, Typ c)
 {
     kalendar.Enqueue(new Udalost(a, k, c), k);
 }
-
+//hmmm
 class Auto;
 {
     int nosnost;
