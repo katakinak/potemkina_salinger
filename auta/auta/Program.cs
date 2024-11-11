@@ -10,7 +10,7 @@ int pisekcelkem;
 public int cas;
 public int KdyNakladat;
 public int pocetAut = 4;
-
+//jgkjz
 for (int i = 0; i<pocetAut; i++)
 {
     new Auto(15, 60, 5, 120);
@@ -37,7 +37,7 @@ class Auto;
         dobaVykladani = dv;
     }
 }
-//alalala
+
 class Udalost
 {
     Auto kdo;
